@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelPlaningProject2.MainPage"
+             BackgroundColor="#F5F5F7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" 
+                         Spacing="25" 
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center">
+
+            <Image Source="dotnet_bot.png" 
+               HeightRequest="150" 
+               Aspect="AspectFit"
+               SemanticProperties.Description="Логотип приложения"/>
+
+            <Label Text="Travel Planner" 
+               FontSize="32" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center" 
+               TextColor="#2196F3"/>
+
+            <Label Text="Планируй свои путешествия легко и удобно" 
+               FontSize="16" 
+               HorizontalOptions="Center" 
+               TextColor="#555555"
+               HorizontalTextAlignment="Center"/>
+
+            <BoxView HeightRequest="20" Color="Transparent"/>
+
+            <Button Text="Начать путешествие" 
+                Clicked="OnStartClicked"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontSize="18"
+                FontAttributes="Bold"
+                CornerRadius="25"
+                HeightRequest="55"
+                WidthRequest="250"
+                HorizontalOptions="Center"
+                Shadow="{Shadow Brush=#2196F3, Offset='5,5', Radius=10}"/>
+
+            <Button Text="У меня есть аккаунт" 
+                Clicked="OnLoginClicked"
+                BackgroundColor="Transparent"
+                TextColor="#2196F3"
+                FontSize="16"
+                HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

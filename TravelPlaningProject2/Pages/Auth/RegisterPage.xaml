@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelPlaningProject2.Pages.Auth.RegisterPage"
+             Title="Регистрация"
+             BackgroundColor="#F9FAFB">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Шапка с кнопкой Назад -->
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Margin="0,0,0,10">
+                <Button Grid.Column="0"
+                        Text="←"
+                        FontSize="24"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        CornerRadius="20"
+                        BackgroundColor="White"
+                        TextColor="#2196F3"
+                        Clicked="OnBackClicked"/>
+
+                <Label Grid.Column="1"
+                       Text="Регистрация"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- Форма -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="12"
+                   Padding="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="16">
+
+                    <!-- Имя -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Имя *" TextColor="#374151"/>
+                        <Entry Placeholder="Введите имя" />
+                    </VerticalStackLayout>
+
+                    <!-- Фамилия -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Фамилия" TextColor="#374151"/>
+                        <Entry Placeholder="Введите фамилию" />
+                    </VerticalStackLayout>
+
+                    <!-- Email -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Email *" TextColor="#374151"/>
+                        <Entry Keyboard="Email" Placeholder="email@example.com" />
+                    </VerticalStackLayout>
+
+                    <!-- Пароль -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Пароль *" TextColor="#374151"/>
+                        <Entry IsPassword="True" Placeholder="Минимум 6 символов" />
+                    </VerticalStackLayout>
+
+                    <!-- Подтверждение пароля -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Подтверждение пароля *" TextColor="#374151"/>
+                        <Entry IsPassword="True" Placeholder="Повторите пароль" />
+                    </VerticalStackLayout>
+
+                    <!-- Валюта -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Валюта *" TextColor="#374151"/>
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                            <Button Grid.Column="0" Text="₽" Clicked="OnCurrencyClicked"/>
+                            <Button Grid.Column="1" Text="€" Clicked="OnCurrencyClicked"/>
+                            <Button Grid.Column="2" Text="$" Clicked="OnCurrencyClicked"/>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- Страна -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Страна проживания" TextColor="#374151"/>
+                        <Entry Placeholder="Введите страну" />
+                    </VerticalStackLayout>
+
+                    <!-- Кнопка Сохранить -->
+                    <Button Text="Сохранить"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="55"
+                            Margin="0,10,0,0"
+                            Clicked="OnSaveClicked"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
