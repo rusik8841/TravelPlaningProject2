@@ -19,61 +19,54 @@
 
                 <!-- Заголовок -->
                 <Label Text="Travel Planner" 
-                       FontSize="28" 
-                       FontAttributes="Bold"  
-                       TextColor="#2196F3" 
-                       HorizontalOptions="Center" />
+                   FontSize="32" 
+                   FontAttributes="Bold" 
+                   TextColor="#2196F3" 
+                   HorizontalOptions="Center" />
 
-                <Label Text="Вход в аккаунт" 
-                       FontSize="18" 
-                       TextColor="#666"
-                       HorizontalOptions="Center" 
-                       Margin="0,0,0,20"/>
+                <Label Text="Войдите в свой аккаунт" 
+                   FontSize="16" 
+                   TextColor="#666" 
+                   HorizontalOptions="Center" />
 
-                <!-- Поле логина -->
-                <Entry x:Name="LoginEntry" 
-                       Placeholder="Логин"  
-                       Text="{Binding Login}"  
-                       WidthRequest="300"  
-                       HorizontalOptions="Center"  
-                       BackgroundColor="White"
-                       Margin="0,5"/>
+                <!-- Поле Логин/Email -->
+                <Entry Placeholder="Email или Логин" 
+                   Text="{Binding Login}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   Keyboard="Email"
+                   BackgroundColor="White"
+                   Margin="0, 20, 0, 0" />
 
-                <!-- Поле пароля -->
-                <Entry x:Name="PasswordEntry" 
-                       Placeholder="Пароль"  
-                       Text="{Binding Password}"  
-                       IsPassword="True"  
-                       WidthRequest="300"  
-                       HorizontalOptions="Center"
-                       BackgroundColor="White"
-                       Margin="0,5"/>
+                <!-- Поле Пароль -->
+                <Entry Placeholder="Пароль" 
+                   Text="{Binding Password}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   IsPassword="True" 
+                   BackgroundColor="White" />
 
                 <!-- Кнопка входа -->
-                <Button Text="Войти"  
-                        Command="{Binding LoginCommand}"
-                        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
-                        BackgroundColor="#2196F3"  
-                        TextColor="White" 
-                        CornerRadius="25"  
-                        WidthRequest="250" 
-                        HeightRequest="50"
-                        HorizontalOptions="Center"  
-                        Margin="0,20"/>
+                <Button Text="Войти" 
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsNotBusy}" 
+                    BackgroundColor="#2196F3" 
+                    TextColor="White" 
+                    CornerRadius="10" 
+                    HeightRequest="50" 
+                    FontAttributes="Bold" />
 
                 <!-- Индикатор загрузки -->
-                <ActivityIndicator IsRunning="{Binding IsBusy}"  
-                                   IsVisible="{Binding IsBusy}"
-                                   Color="#2196F3"
-                                   HorizontalOptions="Center"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               IsVisible="{Binding IsBusy}" 
+                               Color="#2196F3" 
+                               HeightRequest="30" />
 
-                <!-- Сообщение об ошибке -->
-                <Label Text="{Binding ErrorMessage}"  
-                       TextColor="Red"  
-                       IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmptyConverter}}"  
-                       HorizontalOptions="Center"
-                       HorizontalTextAlignment="Center"/>
-
+                <!-- Ошибка -->
+                <Label Text="{Binding ErrorMessage}" 
+                   TextColor="Red" 
+                   HorizontalOptions="Center" 
+                   IsVisible="{Binding IsErrorVisible}" />
                 <!-- Ссылка на регистрацию -->
                 <HorizontalStackLayout Spacing="5" 
                                      HorizontalOptions="Center" 

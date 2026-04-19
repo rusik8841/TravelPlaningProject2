@@ -1,13 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TravelPlaningProject2.ViewModels.Trips
+namespace TravelPlaningProject2.ViewModels.Trips;
+
+// ← public обязательно!
+public partial class TripDetailsViewModel : ObservableObject
 {
-    public partial class TripDetailsViewModel : ObservableObject
-    {
-    }
+    // Ваш код...
 }

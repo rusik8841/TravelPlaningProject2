@@ -2,11 +2,11 @@ using TravelPlaningProject2.ViewModels.Trips;
 
 namespace TravelPlaningProject2.Pages.Trips;
 
-public partial class TripDetailsPage : ContentPage  // ← partial обязателен!
+public partial class TripDetailsPage : ContentPage  // ← partial обязательно!
 {
-    public TripDetailsPage(TripDetailsViewModel viewModel)  // ← ViewModel должен быть public
+    public TripDetailsPage(TripDetailsViewModel viewModel)
     {
-        InitializeComponent();
+        InitializeComponent();  // ← Должно работать
         BindingContext = viewModel;
     }
 }

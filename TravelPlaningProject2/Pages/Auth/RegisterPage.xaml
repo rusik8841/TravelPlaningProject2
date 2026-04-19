@@ -6,93 +6,78 @@
              BackgroundColor="#F9FAFB">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="30" Spacing="15">
 
-            <!-- Шапка с кнопкой Назад -->
-            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Margin="0,0,0,10">
-                <Button Grid.Column="0"
-                        Text="←"
-                        FontSize="24"
-                        WidthRequest="40"
-                        HeightRequest="40"
-                        CornerRadius="20"
-                        BackgroundColor="White"
-                        TextColor="#2196F3"
-                        Clicked="OnBackClicked"/>
+            <!-- Заголовок -->
+            <Label Text="Создание аккаунта" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   TextColor="#2196F3" 
+                   HorizontalOptions="Center" />
 
-                <Label Grid.Column="1"
-                       Text="Регистрация"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       VerticalOptions="Center"/>
-            </Grid>
+            <!-- Имя -->
+            <Entry Placeholder="Ваше Имя" 
+                   Text="{Binding Name}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   BackgroundColor="White" />
 
-            <!-- Форма -->
-            <Frame BackgroundColor="White"
-                   CornerRadius="12"
-                   Padding="20"
-                   HasShadow="True">
+            <!-- Фамилия -->
+            <Entry Placeholder="Ваша Фамилия" 
+                   Text="{Binding Surname}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   BackgroundColor="White" />
 
-                <VerticalStackLayout Spacing="16">
+            <!-- Email -->
+            <Entry Placeholder="Email адрес" 
+                   Text="{Binding Email}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   Keyboard="Email"
+                   BackgroundColor="White" />
 
-                    <!-- Имя -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Имя *" TextColor="#374151"/>
-                        <Entry Placeholder="Введите имя" />
-                    </VerticalStackLayout>
+            <!-- Пароль -->
+            <Entry Placeholder="Придумайте пароль" 
+                   Text="{Binding Password}"
+                   TextColor="Black" 
+                   PlaceholderColor="Gray"
+                   IsPassword="True" 
+                   BackgroundColor="White" />
 
-                    <!-- Фамилия -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Фамилия" TextColor="#374151"/>
-                        <Entry Placeholder="Введите фамилию" />
-                    </VerticalStackLayout>
+            <!-- Кнопка регистрации -->
+            <Button Text="Зарегистрироваться" 
+                    Command="{Binding RegisterCommand}"
+                    IsEnabled="{Binding IsNotBusy}" 
+                    BackgroundColor="#2196F3" 
+                    TextColor="White" 
+                    CornerRadius="10" 
+                    HeightRequest="50" 
+                    FontAttributes="Bold" 
+                    Margin="0, 20, 0, 0" />
 
-                    <!-- Email -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Email *" TextColor="#374151"/>
-                        <Entry Keyboard="Email" Placeholder="email@example.com" />
-                    </VerticalStackLayout>
+            <!-- Индикатор загрузки -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               IsVisible="{Binding IsBusy}" 
+                               Color="#2196F3" />
 
-                    <!-- Пароль -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Пароль *" TextColor="#374151"/>
-                        <Entry IsPassword="True" Placeholder="Минимум 6 символов" />
-                    </VerticalStackLayout>
+            <!-- Ошибка -->
+            <Label Text="{Binding ErrorMessage}" 
+                   TextColor="Red" 
+                   HorizontalOptions="Center" 
+                   IsVisible="{Binding IsErrorVisible}" />
 
-                    <!-- Подтверждение пароля -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Подтверждение пароля *" TextColor="#374151"/>
-                        <Entry IsPassword="True" Placeholder="Повторите пароль" />
-                    </VerticalStackLayout>
-
-                    <!-- Валюта -->
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Валюта *" TextColor="#374151"/>
-                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
-                            <Button Grid.Column="0" Text="₽" Clicked="OnCurrencyClicked"/>
-                            <Button Grid.Column="1" Text="€" Clicked="OnCurrencyClicked"/>
-                            <Button Grid.Column="2" Text="$" Clicked="OnCurrencyClicked"/>
-                        </Grid>
-                    </VerticalStackLayout>
-
-                    <!-- Страна -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Страна проживания" TextColor="#374151"/>
-                        <Entry Placeholder="Введите страну" />
-                    </VerticalStackLayout>
-
-                    <!-- Кнопка Сохранить -->
-                    <Button Text="Сохранить"
-                            BackgroundColor="#2563EB"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            HeightRequest="55"
-                            Margin="0,10,0,0"
-                            Clicked="OnSaveClicked"/>
-
-                </VerticalStackLayout>
-            </Frame>
+            <!-- Ссылка на вход -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Label Text="Уже есть аккаунт?" TextColor="Black" />
+                <Label Text="Войти" 
+                       TextColor="#2196F3" 
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

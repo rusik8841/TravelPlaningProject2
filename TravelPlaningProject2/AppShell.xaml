@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="TravelPlaningProject2.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -10,41 +9,20 @@
     Shell.FlyoutBehavior="Flyout"
     Title="Travel Planner">
 
-    <!-- Страница входа (скрыта из меню) -->
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate auth:LoginPage}"
-        Route="LoginPage"
-        FlyoutItemIsVisible="False" />
+    <!-- Страницы авторизации (скрыты из меню) -->
+    <ShellContent Title="Login" ContentTemplate="{DataTemplate auth:LoginPage}" Route="LoginPage" FlyoutItemIsVisible="False" />
+    <ShellContent Title="Register" ContentTemplate="{DataTemplate auth:RegisterPage}" Route="RegisterPage" FlyoutItemIsVisible="False" />
 
-    <!-- Страница регистрации (скрыта из меню) -->
-    <ShellContent
-        Title="Register"
-        ContentTemplate="{DataTemplate auth:RegisterPage}"
-        Route="RegisterPage"
-        FlyoutItemIsVisible="False" />
-
-    <!-- Главная страница - Поездки -->
+    <!-- Главная: Поездки -->
     <FlyoutItem Title="Поездки" Icon="icon.png">
-        <ShellContent
-            Title="Мои поездки"
-            ContentTemplate="{DataTemplate trips:TripsPage}"
-            Route="TripsPage" />
+        <ShellContent Title="Мои поездки" ContentTemplate="{DataTemplate trips:TripsPage}" Route="TripsPage" />
     </FlyoutItem>
 
-    <!-- Страница деталей поездки (скрыта из меню) -->
-    <ShellContent
-        Title="Детали поездки"
-        ContentTemplate="{DataTemplate trips:TripDetailsPage}"
-        Route="TripDetailsPage"
-        FlyoutItemIsVisible="False" />
+    <!-- Детали поездки (скрыта) -->
+    <ShellContent Title="Детали" ContentTemplate="{DataTemplate trips:TripDetailsPage}" Route="TripDetailsPage" FlyoutItemIsVisible="False" />
 
-    <!-- Страница профиля -->
+    <!-- Профиль -->
     <FlyoutItem Title="Профиль" Icon="icon.png">
-        <ShellContent
-            Title="Мой профиль"
-            ContentTemplate="{DataTemplate profile:ProfilePage}"
-            Route="ProfilePage" />
+        <ShellContent Title="Мой профиль" ContentTemplate="{DataTemplate profile:ProfilePage}" Route="ProfilePage" />
     </FlyoutItem>
-
 </Shell>

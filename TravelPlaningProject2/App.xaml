@@ -7,13 +7,10 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <!-- ✅ UI конвертеры для Binding (IValueConverter) -->
+            <!-- ✅ UI конвертеры (обязательно!) -->
             <helpers:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <helpers:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
+            <helpers:StringNotEmptyToBoolConverter x:Key="StringNotEmptyConverter" />
             <helpers:BoolToColorConverter x:Key="BoolToColorConverter" />
-
-            <!-- ❌ JSON конвертеры (DateConverter, CurrencyToStringConverter) 
-                 НЕ регистрируются здесь! Они добавляются в MauiProgram.cs -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
