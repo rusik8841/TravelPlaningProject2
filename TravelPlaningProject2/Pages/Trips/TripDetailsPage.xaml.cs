@@ -1,9 +1,12 @@
-namespace TravelPlaningProject2.Pages.History;
+using TravelPlaningProject2.ViewModels.Trips;
 
-public partial class TripDetailsPage : ContentPage
+namespace TravelPlaningProject2.Pages.Trips;
+
+public partial class TripDetailsPage : ContentPage  // ← partial обязателен!
 {
-	public TripDetailsPage()
-	{
-		InitializeComponent();
-	}
+    public TripDetailsPage(TripDetailsViewModel viewModel)  // ← ViewModel должен быть public
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 }

@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:helpers="clr-namespace:TravelPlaningProject2.Helpers"
-             x:Class="TravelPlaningProject2.App">
+<Application 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:TravelPlaningProject2.Helpers"
+    x:Class="TravelPlaningProject2.App">
+
     <Application.Resources>
         <ResourceDictionary>
-            <!-- UI конвертеры для Binding -->
+            <!-- ✅ UI конвертеры для Binding (IValueConverter) -->
             <helpers:InverseBoolConverter x:Key="InverseBoolConverter" />
             <helpers:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
             <helpers:BoolToColorConverter x:Key="BoolToColorConverter" />
+
+            <!-- ❌ JSON конвертеры (DateConverter, CurrencyToStringConverter) 
+                 НЕ регистрируются здесь! Они добавляются в MauiProgram.cs -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
