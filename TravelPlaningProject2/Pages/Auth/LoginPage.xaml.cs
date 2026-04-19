@@ -1,26 +1,17 @@
-namespace TravelPlaningProject2.Pages.Auth
+using TravelPlaningProject2.ViewModels.Auth;
+
+namespace TravelPlaningProject2.Pages.Auth;
+
+public partial class LoginPage : ContentPage
 {
-    public partial class LoginPage : ContentPage
+    public LoginPage(LoginViewModel viewModel)
     {
-        public LoginPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 
-        private async void OnBackClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
-        private async void OnRegisterTapped(object sender, TappedEventArgs e)
-        {
-            await Navigation.PushAsync(new RegisterPage());
-        }
-
-        private async void OnLoginClicked(object sender, EventArgs e)
-        {
-            await DisplayAlert("Вход", "Добро пожаловать!", "OK");
-            await Navigation.PushAsync(new TravelPlaningProject2.Pages.HomePage());
-        }
+    private async void ToRegisterPage(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//RegisterPage");
     }
 }

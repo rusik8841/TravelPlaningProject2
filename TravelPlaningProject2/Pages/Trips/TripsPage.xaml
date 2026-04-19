@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TravelPlaningProject2.ViewModels.Trips"
+             x:Class="TravelPlaningProject2.Pages.Trips.TripsPage"
+             Title="Мои поездки"
+             BackgroundColor="#F5F5F7">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Профиль" Command="{Binding GoToProfileCommand}" IconImageSource="profile_icon.png"/>
+        <ToolbarItem Text="Выйти" Command="{Binding LogoutCommand}" IconImageSource="logout_icon.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <!-- Заголовок -->
+            <VerticalStackLayout Grid.Row="0" Padding="20,10">
+                <Label Text="Поездки" FontSize="24" FontAttributes="Bold" TextColor="#2196F3"/>
+                <Label Text="Ваши запланированные путешествия" TextColor="#666" FontSize="14"/>
+            </VerticalStackLayout>
+
+            <!-- Список поездок -->
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Trips}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="15,5" Padding="0" CornerRadius="15" HasShadow="True" BackgroundColor="White">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TripsViewModel}}, Path=SelectTripCommand}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+
+                            <VerticalStackLayout Padding="20">
+                                <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                                <Label Text="{Binding DestinationName}" FontSize="14" TextColor="#666" Margin="0,5,0,0"/>
+
+                                <HorizontalStackLayout Spacing="15" Margin="0,10,0,0">
+                                    <Label Text="{Binding DateStart, StringFormat='📅 {0:dd.MM.yyyy}'}" FontSize="14"/>
+                                    <Label Text="—" FontSize="14"/>
+                                    <Label Text="{Binding DateEnd, StringFormat='{0:dd.MM.yyyy}'}" FontSize="14"/>
+                                </HorizontalStackLayout>
+
+                                <Label Text="{Binding Status}" 
+                                       TextColor="White" 
+                                       BackgroundColor="#2196F3"
+                                       Padding="10,5"
+                                       FontSize="12"
+                                       HorizontalOptions="Start"
+                                       Margin="0,10,0,0"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <!-- Пустой список -->
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                        <Label Text="🎒" FontSize="48" HorizontalOptions="Center"/>
+                        <Label Text="Нет активных поездок" TextColor="#666" HorizontalOptions="Center"/>
+                        <Button Text="+ Добавить поездку" 
+                                Command="{Binding AddTripCommand}"
+                                BackgroundColor="#2196F3" TextColor="White"
+                                CornerRadius="20" WidthRequest="200"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <!-- Плавающая кнопка добавления -->
+            <Button Grid.Row="1" Text="+" 
+                    Command="{Binding AddTripCommand}"
+                    BackgroundColor="#2196F3" TextColor="White"
+                    CornerRadius="30" WidthRequest="60" HeightRequest="60"
+                    HorizontalOptions="End" VerticalOptions="End"
+                    Margin="20"/>
+
+            <!-- Индикатор загрузки -->
+            <ActivityIndicator Grid.Row="1" 
+                               IsRunning="{Binding IsBusy}" 
+                               IsVisible="{Binding IsBusy}"
+                               Color="#2196F3"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

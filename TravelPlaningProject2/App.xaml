@@ -1,14 +1,14 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:TravelPlaningProject2"
+             xmlns:helpers="clr-namespace:TravelPlaningProject2.Helpers"
              x:Class="TravelPlaningProject2.App">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            <!-- UI конвертеры для Binding -->
+            <helpers:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <helpers:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
+            <helpers:BoolToColorConverter x:Key="BoolToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -3,89 +3,94 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelPlaningProject2.Pages.Auth.LoginPage"
              Title="Вход"
-             BackgroundColor="#F9FAFB">
+             BackgroundColor="#F5F5F7">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center" 
+                               Padding="30">
 
-            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Margin="0,0,0,10">
-                <Button Grid.Column="0"
-                        Text="←"
-                        FontSize="24"
-                        WidthRequest="40"
-                        HeightRequest="40"
-                        CornerRadius="20"
-                        BackgroundColor="White"
-                        TextColor="#2196F3"
-                        Clicked="OnBackClicked"/>
+                <!-- Логотип -->
+                <Image Source="dotnet_bot.png" 
+                       HeightRequest="100" 
+                       Aspect="AspectFit"/>
 
-                <Label Grid.Column="1"
-                       Text="Вход"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       VerticalOptions="Center"
-                       TextColor="#1F2937"/>
-            </Grid>
+                <!-- Заголовок -->
+                <Label Text="Travel Planner" 
+                       FontSize="28" 
+                       FontAttributes="Bold"  
+                       TextColor="#2196F3" 
+                       HorizontalOptions="Center" />
 
-            <Frame BackgroundColor="White"
-                   CornerRadius="12"
-                   Padding="20"
-                   HasShadow="True"
-                   BorderColor="#E5E7EB">
+                <Label Text="Вход в аккаунт" 
+                       FontSize="18" 
+                       TextColor="#666"
+                       HorizontalOptions="Center" 
+                       Margin="0,0,0,20"/>
 
-                <VerticalStackLayout Spacing="20">
+                <!-- Поле логина -->
+                <Entry x:Name="LoginEntry" 
+                       Placeholder="Логин"  
+                       Text="{Binding Login}"  
+                       WidthRequest="300"  
+                       HorizontalOptions="Center"  
+                       BackgroundColor="White"
+                       Margin="0,5"/>
 
-                    <Label x:Name="LabelError"
-                           TextColor="#EF4444"
-                           BackgroundColor="#FEF2F2"
-                           Padding="12"
-                           IsVisible="False"
-                           HorizontalTextAlignment="Center"/>
+                <!-- Поле пароля -->
+                <Entry x:Name="PasswordEntry" 
+                       Placeholder="Пароль"  
+                       Text="{Binding Password}"  
+                       IsPassword="True"  
+                       WidthRequest="300"  
+                       HorizontalOptions="Center"
+                       BackgroundColor="White"
+                       Margin="0,5"/>
 
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Email" 
-                               TextColor="#374151" 
-                               FontSize="14"/>
-                        <Entry x:Name="EntryEmail"
-                               Keyboard="Email"
-                               Placeholder="email@example.com"
-                               HeightRequest="50"/>
-                    </VerticalStackLayout>
+                <!-- Кнопка входа -->
+                <Button Text="Войти"  
+                        Command="{Binding LoginCommand}"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                        BackgroundColor="#2196F3"  
+                        TextColor="White" 
+                        CornerRadius="25"  
+                        WidthRequest="250" 
+                        HeightRequest="50"
+                        HorizontalOptions="Center"  
+                        Margin="0,20"/>
 
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Пароль" 
-                               TextColor="#374151" 
-                               FontSize="14"/>
-                        <Entry x:Name="EntryPassword"
-                               IsPassword="True"
-                               Placeholder="Введите пароль"
-                               HeightRequest="50"/>
-                    </VerticalStackLayout>
+                <!-- Индикатор загрузки -->
+                <ActivityIndicator IsRunning="{Binding IsBusy}"  
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="#2196F3"
+                                   HorizontalOptions="Center"/>
 
-                    <Button Text="Войти"
-                            BackgroundColor="#2563EB"
-                            TextColor="White"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            HeightRequest="55"
-                            Margin="0,10,0,0"
-                            Clicked="OnLoginClicked"/>
+                <!-- Сообщение об ошибке -->
+                <Label Text="{Binding ErrorMessage}"  
+                       TextColor="Red"  
+                       IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmptyConverter}}"  
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                        <Label Text="Нет аккаунта?" TextColor="#6B7280"/>
-                        <Label Text="Зарегистрироваться" 
-                               TextColor="#2563EB"
-                               TextDecorations="Underline">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnRegisterTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </HorizontalStackLayout>
+                <!-- Ссылка на регистрацию -->
+                <HorizontalStackLayout Spacing="5" 
+                                     HorizontalOptions="Center" 
+                                     Margin="0,30">
+                    <Label Text="Нет аккаунта?" 
+                           TextColor="Gray" 
+                           VerticalOptions="Center"/>
+                    <Button Text="Зарегистрироваться"
+                            Clicked="ToRegisterPage"
+                            BackgroundColor="Transparent"  
+                            TextColor="#2196F3" 
+                            Padding="0"  
+                            VerticalOptions="Center" 
+                            FontAttributes="Bold"/>
+                </HorizontalStackLayout>
 
-                </VerticalStackLayout>
-            </Frame>
-
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
